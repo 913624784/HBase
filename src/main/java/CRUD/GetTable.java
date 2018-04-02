@@ -2,6 +2,7 @@ package CRUD;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.Cell;
+import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
@@ -24,23 +25,23 @@ public class GetTable {
 		Admin admin = conn.getAdmin();
 
 		Table tb=conn.getTable(name);
-		Get get=new Get(Bytes.toBytes("row-H001"));
+		Get get=new Get(Bytes.toBytes("row-H002"));
 		get.getRow();
 		Result rs=tb.get(get);
 		get.setMaxVersions();
 		for(Cell cell:rs.rawCells()){
 			System.out.println(cell);
-			//row3/fam1:col1/1517349517898/Put/vlen=4/seqid=0
-			//row3/fam1:col2/1517349517898/Put/vlen=4/seqid=0
+			/*row-H002/fam2:col1/1520693546881/Put/vlen=1/seqid=0
+			row-H002/fam3:col2/1520693546881/Put/vlen=1/seqid=0*/
 		}
-		//keyvalues={row3/fam1:col1/1517349517898/Put/vlen=4/seqid=0, row3/fam1:col2/1517349517898/Put/vlen=4/seqid=0}
-		//System.out.println(rs);
-		/*for(Cell cell:rs.rawCells()){
+		//keyvalues={row-H002/fam2:col1/1520693546881/Put/vlen=1/seqid=0, row-H002/fam3:col2/1520693546881/Put/vlen=1/seqid=0}
+		  System.out.println(rs);
+		for(Cell cell:rs.rawCells()){
 			System.out.print(new String(CellUtil.cloneRow(cell)));
 			System.out.print(new String(CellUtil.cloneFamily(cell)));
 			System.out.print(new String(CellUtil.cloneQualifier(cell)));
 			System.out.println(new String(CellUtil.cloneValue(cell)));
-		}*/
+		}
 
 		tb.close();
 		conn.close();

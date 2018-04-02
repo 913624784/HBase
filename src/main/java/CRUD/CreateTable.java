@@ -30,7 +30,7 @@ public class CreateTable {
 		HTableDescriptor desc=new HTableDescriptor(TableName.valueOf("tbfilm")) ;
 		HColumnDescriptor hcd=new HColumnDescriptor(Bytes.toBytes("fam1"));
 		HColumnDescriptor hcd1=new HColumnDescriptor(Bytes.toBytes("fam2"));
-		HColumnDescriptor hcd2=new HColumnDescriptor(Bytes.toBytes("fam6"));
+		HColumnDescriptor hcd2=new HColumnDescriptor(Bytes.toBytes("fam3"));
 		desc.addFamily(hcd);
 		desc.addFamily(hcd1);
 		desc.addFamily(hcd2);

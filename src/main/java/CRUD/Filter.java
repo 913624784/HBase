@@ -24,7 +24,7 @@ public class Filter {
 
 		Table tb = conn.getTable(name);
 		CompareFilter filter1 = new FamilyFilter(CompareFilter.CompareOp.LESS_OR_EQUAL,
-				new SubstringComparator("fam1"));
+				new SubstringComparator("fam2"));
 
 		Scan s1 = new Scan();
 		s1.setFilter(filter1);
@@ -37,7 +37,7 @@ public class Filter {
 
 
 		CompareFilter filter2 = new RowFilter(CompareFilter.CompareOp.EQUAL,
-				new RegexStringComparator("row-H.*"));
+				new RegexStringComparator("row-S.*"));
 
 		Scan s2 = new Scan();
 		s2.setFilter(filter2);

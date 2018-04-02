@@ -5,7 +5,6 @@ import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.HTableDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
-import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
 
@@ -32,8 +31,8 @@ public class ScanTable {
 			System.out.println(h);
 		}
 		Scan s=new Scan();
-		s.setStartRow(Bytes.toBytes("row2"));
-		s.setStopRow(Bytes.toBytes("row4"));
+		/*s.setStartRow(Bytes.toBytes("row2"));
+		s.setStopRow(Bytes.toBytes("row4"));*/
 		ResultScanner rsn=tb.getScanner(s);
 		for(Result r:rsn){
 			System.out.println(r);

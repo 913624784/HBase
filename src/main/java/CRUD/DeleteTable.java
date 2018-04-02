@@ -17,7 +17,7 @@ public class DeleteTable {
 		Configuration conf = HBaseConfiguration.create();
 		conf.set("hbase.zookeeper.quorum", "192.168.170.133");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
-		TableName name = TableName.valueOf("t1");
+		TableName name = TableName.valueOf("tbfilm");
 		// 2，管理者Admin
 		// HBaseAdmin admin=new HBaseAdmin(conf);
 		Connection conn = ConnectionFactory.createConnection(conf);// 获取连接
@@ -27,7 +27,7 @@ public class DeleteTable {
 			if(admin.isTableEnabled(name)){
 				admin.disableTable(name);
 			}
-			admin.deleteTables("t1");
+			admin.deleteTables("tbfilm");
 		}
 		admin.close();
 		conn.close();

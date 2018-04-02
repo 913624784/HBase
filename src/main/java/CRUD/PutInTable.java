@@ -37,11 +37,11 @@ public class PutInTable {
         Put pp = new Put(Bytes.toBytes("row-S003"));
         Put ppp = new Put(Bytes.toBytes("row-S004"));
 		p.addColumn(Bytes.toBytes("fam2"), Bytes.toBytes("col1"), Bytes.toBytes("1"));
-		p.addColumn(Bytes.toBytes("fam6"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
+		p.addColumn(Bytes.toBytes("fam3"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
         pp.addColumn(Bytes.toBytes("fam2"), Bytes.toBytes("col1"), Bytes.toBytes("2"));
-        pp.addColumn(Bytes.toBytes("fam6"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
+        pp.addColumn(Bytes.toBytes("fam3"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
         ppp.addColumn(Bytes.toBytes("fam2"), Bytes.toBytes("col1"), Bytes.toBytes("1"));
-        ppp.addColumn(Bytes.toBytes("fam6"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
+        ppp.addColumn(Bytes.toBytes("fam3"), Bytes.toBytes("col2"), Bytes.toBytes("1"));
 		puts.add(p);
 		puts.add(pp);
 		puts.add(ppp);
