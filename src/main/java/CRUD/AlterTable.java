@@ -16,32 +16,31 @@ public class AlterTable {
 
 	public static void main(String[] args) throws IOException {
 		// 1，获取系统的资源情况
-		// Configuration conf=HBaseConfiguration();
 		Configuration conf = HBaseConfiguration.create();
 		conf.set("hbase.zookeeper.quorum", "192.168.170.133");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
-		TableName name=TableName.valueOf("tablename");
+
+		TableName name=TableName.valueOf("tablename");//表名
+
 		// 2，管理者Admin
-		// HBaseAdmin admin=new HBaseAdmin(conf);
 		Connection conn = ConnectionFactory.createConnection(conf);// 获取连接
 		Admin admin = conn.getAdmin();
+		// 3，管理者修改表结构
 		HTableDescriptor htd=admin.getTableDescriptor(name);//这个是获得当前表 如果new一个 则会覆盖内容
-		HColumnDescriptor hcd=new HColumnDescriptor(Bytes.toBytes("fam8"));
-		//对列的修改
-		hcd.setBlocksize(65536);
-		//把列描述提交给表描述
-		htd.addFamily(hcd);
+		//创建一个列族
+		HColumnDescriptor hcd=new HColumnDescriptor(Bytes.toBytes("fam9"));
+		hcd.setBlocksize(65536);//对列的修改
+		//htd.addFamily(hcd);//把列描述提交给表描述
+
 		//修改列族
-		//htd.modifyFamily(hcd);
+		htd.modifyFamily(hcd);
+
 		//先禁用表 再修改
 		//admin.disableTable(name);//无论表状态是什么样 都能修改列族和表结构
-
-
-		admin.modifyTable(name, htd);//定义表结构
-		//admin.modifyColumn(name, hcd);//定义列族结构
-
+			//admin.modifyTable(name, htd);//定义表结构
+			admin.modifyColumn(name, hcd);//定义列族结构
 		//admin.enableTable(name);
-		//关闭资源 注意顺序
+		//关闭资源
 		admin.close();
 		conn.close();
 
