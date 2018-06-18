@@ -9,12 +9,5 @@
         <relativePath>../MapReduce/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>HBase</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../Practice</module>
-    </modules>
-
-
 </project>
