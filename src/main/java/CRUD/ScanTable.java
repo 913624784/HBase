@@ -18,7 +18,7 @@ public class ScanTable {
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
 		// 2，管理者Admin
 		// HBaseAdmin admin=new HBaseAdmin(conf);
-		TableName name = TableName.valueOf("tbfilm");
+		TableName name = TableName.valueOf("tbfilm");//表名
 		Connection conn = ConnectionFactory.createConnection(conf);// 获取连接
 		Admin admin = conn.getAdmin();
 		//获取单个表的描述
@@ -26,13 +26,13 @@ public class ScanTable {
 		System.out.println(htd);*/
 		//获取所有表的描述
 		HTableDescriptor htd[]=admin.listTables();
-		Table tb=conn.getTable(name);
 		for(HTableDescriptor h:htd){
 			System.out.println(h);
 		}
 		Scan s=new Scan();
 		/*s.setStartRow(Bytes.toBytes("row2"));
 		s.setStopRow(Bytes.toBytes("row4"));*/
+		Table tb=conn.getTable(name);
 		ResultScanner rsn=tb.getScanner(s);
 		for(Result r:rsn){
 			System.out.println(r);

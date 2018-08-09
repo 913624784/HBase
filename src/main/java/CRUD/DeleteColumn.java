@@ -12,19 +12,18 @@ public class DeleteColumn {
 
 	public static void main(String[] args) throws IOException {
 		// 1，获取系统的资源情况
-		// Configuration conf=HBaseConfiguration();
 		Configuration conf = HBaseConfiguration.create();
 		conf.set("hbase.zookeeper.quorum", "192.168.170.133");
 		conf.set("hbase.zookeeper.property.clientPort", "2181");
 		TableName name = TableName.valueOf("tablename");
 		// 2，管理者Admin
-		// HBaseAdmin admin=new HBaseAdmin(conf);
 		Connection conn = ConnectionFactory.createConnection(conf);// 获取连接
 		Admin admin = conn.getAdmin();
-		Table tb=conn.getTable(name);
-		Delete d=new Delete(Bytes.toBytes("row3"));
 		//admin.deleteColumn(name, Bytes.toBytes("fam8"));//列族属于表结构 要用admin删除
+		Table tb=conn.getTable(name);
+		Delete d=new Delete(Bytes.toBytes("row7"));
 		tb.delete(d);//用tb删除row
+
 		tb.close();
 		conn.close();
 
